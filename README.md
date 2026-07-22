@@ -50,42 +50,6 @@ documents/ (정리 대상 폴더)
 │
 ├── 📁 04_복무_연수_인사 (출장, 연수, 성과급 등)
 └── 📁 99_기타문서
-🛠️ 요구 사항 (Prerequisites)
-Python: 3.10 이상
-
-Node.js: 문서 변환 엔진인 kordoc 실행을 위해 필요 (Node.js 공식 다운로드)
-
-kordoc: HWP, HWPX, PDF 마크다운 변환 엔진 (npx -y kordoc을 통해 실행 시 자동 로드)
-
-Google AI Studio API Key: Gemini API Key 발급받기
-
-🚀 설치 및 설정 (Installation)
-1. Repository 클론
-Bash
-git clone [https://github.com/Dongnyeok-code/MySorter.git](https://github.com/Dongnyeok-code/MySorter.git)
-cd MySorter
-2. 필요 파이썬 패키지 설치
-Bash
-pip install google-genai tqdm python-dotenv
-3. .env 환경 변수 설정
-프로젝트 최상위 루트 경로에 .env 파일을 생성하고 발급받은 Gemini API 키를 입력합니다.
-
-코드 스니펫
-GEMINI_API_KEY=your_gemini_api_key_here
-💻 사용 방법 (Usage)
-문서 준비: 프로젝트 폴더 내에 documents 폴더를 생성하고, 분류하고 싶은 HWP, HWPX, PDF 파일들을 넣습니다.
-
-Bash
-mkdir documents
-프로그램 실행:
-
-Bash
-python sorter.py
-진행 상황 확인:
-터미널 화면에 출력되는 3단계 프로그레스 바를 통해 파싱, 분석, 이동 과정을 실시간으로 확인할 수 있습니다.
-
-🔒 보안 (Security & Privacy)
-.gitignore 설정을 통해 개인 문서가 들어있는 documents/ 폴더, 중간 상태 기록 파일인 progress.json, API 키가 포함된 .env 파일은 Git 추적에서 완전히 제외되어 깃허브에 업로드되지 않습니다.
 
 🙏 출처 및 감사 (Credits & Acknowledgments)
 본 프로그램은 HWP, HWPX, PDF 등 한국어 문서를 AI가 쉽게 해석할 수 있는 마크다운 텍스트로 깔끔하게 파싱해 주는 kordoc 모듈을 핵심 파서 엔진으로 사용하고 있습니다. 훌륭한 도구를 공개해 주신 딴짓하는 류주임님께 감사드립니다.

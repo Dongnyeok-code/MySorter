@@ -227,3 +227,25 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def cleanup_empty_folders(target_dir):
+    """비어 있는 폴더들을 가장 하위 폴더부터 역순(bottom-up)으로 삭제합니다."""
+    print("\n🧹 빈 폴더 정리를 시작합니다...")
+    deleted_count = 0
+    
+    # topdown=False 설정으로 가장 깊은 하위 폴더부터 탐색
+    for root, dirs, files in os.walk(target_dir, topdown=False):
+        for d in dirs:
+            folder_path = os.path.join(root, d)
+            # 폴더 안에 아무것도 없으면 삭제
+            if not os.listdir(folder_path):
+                try:
+                    os.rmdir(folder_path)
+                    print(f"  🗑️ 빈 폴더 삭제 완료: {os.path.relpath(folder_path, target_dir)}")
+                    deleted_count += 1
+                except Exception as e:
+                    pass
+                
+    print(f"✅ 총 {deleted_count}개의 빈 폴더가 정돈되었습니다.")
+
+# main() 함수 맨 끝에 cleanup_empty_folders(TARGET_DIR) 추가!
